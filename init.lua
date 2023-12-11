@@ -41,10 +41,14 @@ P.S. You can delete this when you're done too. It's your config now :)
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-print('hello bruh')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
 vim.keymap.set('n', '<leader>e', vim.cmd.Ex)
+vim.wo.number = true
+vim.wo.relativenumber = true
+vim.o.clipboard = 'unnamedplus'
+vim.o.undofile = true
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
@@ -61,3 +65,17 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
+require('lazy').setup({
+	{
+	'nvim-telescope/telescope.nvim', tag='0.1.5',
+	dependencies = { 'nvim-lua/plenary.nvim' }
+	}
+}, {})
+
+
+local builtin = require('telescope/builtin')
+vim.keymap.set('n', '<leader>f', builtin.find_files, {})
+vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
+vim.keymap.set('n', '<leader>gs', function()
+	builtin.grep_string({ search = vim.fn.input("Grep > ") });
+end)
