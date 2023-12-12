@@ -55,14 +55,14 @@ vim.o.undofile = true
 --    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  }
+	vim.fn.system {
+		'git',
+		'clone',
+		'--filter=blob:none',
+		'https://github.com/folke/lazy.nvim.git',
+		'--branch=stable', -- latest stable release
+		lazypath,
+	}
 end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
@@ -96,7 +96,7 @@ require('lazy').setup({
 			configs.setup({
 				ensure_installed = {"help", "lua", "vim", "vimdoc", "javascript", "typescript", "html", "go" },
 				sync_install = false,
-				highlight = { enable = true },
+			highlight = { enable = true },
 				indent = { enable = true },  
 			})
 		end
@@ -118,6 +118,8 @@ require('lazy').setup({
 	{'hrsh7th/cmp-nvim-lsp'},
 	{'hrsh7th/nvim-cmp'},
 	{'L3MON4D3/LuaSnip'},
+
+	{'tpope/vim-commentary'}
 }, {})
 
 -- Telescope config
@@ -192,3 +194,37 @@ require('mason-lspconfig').setup({
 		lsp.default_setup,
 	},
 })
+
+
+-- Primeagen editor config  might want to remove some of these
+-- vim.opt.guicursor = ""
+
+vim.opt.nu = true
+vim.opt.relativenumber = true
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+vim.opt.smartindent = true
+
+vim.opt.wrap = false
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 8
+-- vim.opt.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
+
+vim.opt.updatetime = 50
+
+-- vim.opt.colorcolumn = "80"
