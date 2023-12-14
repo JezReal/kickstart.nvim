@@ -9,6 +9,7 @@ vim.wo.relativenumber = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.undofile = true
 
+
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system {
@@ -47,7 +48,7 @@ require('lazy').setup({
             local configs = require("nvim-treesitter.configs")
 
             configs.setup({
-                ensure_installed = { "help", "lua", "vim", "vimdoc", "javascript", "typescript", "html", "go" },
+                ensure_installed = {"lua", "vim", "vimdoc", "javascript", "typescript", "html", "go" },
                 sync_install = false,
                 highlight = { enable = true },
                 indent = { enable = true },
@@ -76,8 +77,10 @@ require('lazy').setup({
 
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-web-devicons' }
-    }
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+
+    { 'jiangmiao/auto-pairs' }
 
 }, {})
 
@@ -109,6 +112,9 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 -- Fugitive config
 vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
+vim.keymap.set('n', '<leader>gp', function ()
+    vim.cmd("Git push")
+end)
 
 -- Lualine config
 require('lualine').setup({
