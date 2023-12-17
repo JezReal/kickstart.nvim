@@ -9,7 +9,6 @@ vim.wo.relativenumber = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.undofile = true
 
-
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system {
@@ -89,7 +88,7 @@ local builtin = require('telescope/builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, {})
 vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
 -- Grep for some reason does not work
-vim.keymap.set('n', '<leader>gs', function()
+vim.keymap.set('n', '<leader>gr', function()
     builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
 
