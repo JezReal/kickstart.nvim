@@ -47,7 +47,7 @@ require('lazy').setup({
             local configs = require("nvim-treesitter.configs")
 
             configs.setup({
-                ensure_installed = {"lua", "vim", "vimdoc", "javascript", "typescript", "html", "go" },
+                ensure_installed = { "lua", "vim", "vimdoc", "javascript", "typescript", "html", "go" },
                 sync_install = false,
                 highlight = { enable = true },
                 indent = { enable = true },
@@ -84,12 +84,23 @@ require('lazy').setup({
 
 -- Telescope config
 local builtin = require('telescope/builtin')
-vim.keymap.set('n', '<leader>f', builtin.find_files, {})
+vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
 -- Grep for some reason does not work
 vim.keymap.set('n', '<leader>gr', function()
     builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
+
+require('telescope').setup({
+    pickers = {
+        find_files = {
+            disable_devicons = true
+        },
+        git_files = {
+            disable_devicons = true
+        }
+    }
+})
 
 
 -- Harpoon config
@@ -110,7 +121,7 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 -- Fugitive config
 vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
-vim.keymap.set('n', '<leader>gp', function ()
+vim.keymap.set('n', '<leader>gp', function()
     vim.cmd("Git push")
 end)
 
@@ -124,8 +135,8 @@ require('lualine').setup({
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
-        lualine_y = {'branch', 'diff'},
-        lualine_z = {'encoding', 'fileformat', 'filetype'},
+        lualine_y = { 'branch', 'diff' },
+        lualine_z = { 'encoding', 'fileformat', 'filetype' },
     }
 })
 
@@ -172,16 +183,16 @@ lsp.setup()
 local autocmd = vim.api.nvim_create_autocmd
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = {'gopls'},
+    ensure_installed = { 'gopls' },
     handlers = {
         lsp.default_setup,
-        gopls = function ()
+        gopls = function()
             require('lspconfig').gopls.setup({
                 autocmd("BufWritePre", {
                     pattern = "*.go",
                     callback = function()
                         local params = vim.lsp.util.make_range_params()
-                        params.context = {only = {"source.organizeImports"}}
+                        params.context = { only = { "source.organizeImports" } }
                         -- buf_request_sync defaults to a 1000ms timeout. Depending on your
                         -- machine and codebase, you may want longer. Add an additional
                         -- argument after params if you find that you have to write the file
@@ -196,7 +207,7 @@ require('mason-lspconfig').setup({
                                 end
                             end
                         end
-                        vim.lsp.buf.format({async = false})
+                        vim.lsp.buf.format({ async = false })
                     end
                 }),
                 completeUnimported = true,
@@ -240,6 +251,7 @@ vim.opt.scrolloff = 8
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+vim.opt.colorcolumn = "100"
 
 -- Primeagen remaps: consider removing some of them or at least edit them. might work for now tho
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -255,7 +267,7 @@ end)
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set({ 'n', 'v'}, '<leader>p', [["+p]])
+vim.keymap.set({ 'n', 'v' }, '<leader>p', [["+p]])
 vim.keymap.set('n', '<leader>P', [["+P]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
