@@ -19,6 +19,8 @@ end)
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+-- these remaps does not work when using tmux. just go to insert mode and use system paste :))
+-- leaving these in in case you use nvim without tmux
 vim.keymap.set({ 'n', 'v' }, '<leader>p', [["+p]])
 vim.keymap.set('n', '<leader>P', [["+P]])
 
