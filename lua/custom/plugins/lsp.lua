@@ -22,9 +22,13 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
             local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({})
+            lspconfig.lua_ls.setup({
+                capabilities = capabilities
+            })
             lspconfig.gopls.setup({
+                capabilities = capabilities,
                 settings = {
                     gopls = {
                         analyses = {
@@ -35,8 +39,12 @@ return {
                     },
                 },
             })
-            lspconfig.tsserver.setup({})
-            lspconfig.html.setup({})
+            lspconfig.tsserver.setup({
+                capabilities = capabilities
+            })
+            lspconfig.html.setup({
+                capabilities = capabilities
+            })
 
 
             -- keymaps
