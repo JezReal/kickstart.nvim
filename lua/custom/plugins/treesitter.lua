@@ -12,12 +12,12 @@ return {
                 "javascript",
                 "typescript",
                 "html",
-                "go"
+                "go",
             },
             auto_install = true,
             sync_install = false,
             highlight = { enable = true },
             indent = { enable = true },
         })
-    end
+    end,
 }

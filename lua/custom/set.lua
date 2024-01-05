@@ -1,6 +1,6 @@
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.o.clipboard = 'unnamedplus'
+vim.o.clipboard = "unnamedplus"
 vim.o.undofile = true
 
 vim.opt.nu = true
