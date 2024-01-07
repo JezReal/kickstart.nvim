@@ -7,6 +7,7 @@ return {
             sources = {
                 null_ls.builtins.formatting.stylua,
                 null_ls.builtins.formatting.eslint_d,
+                null_ls.builtins.diagnostics.golangci_lint,
             },
         })
     end,
