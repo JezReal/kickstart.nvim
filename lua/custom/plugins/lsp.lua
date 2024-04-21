@@ -22,10 +22,11 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")
+
             lspconfig.lua_ls.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
             })
             lspconfig.gopls.setup({
                 capabilities = capabilities,
@@ -41,16 +42,23 @@ return {
                     },
                 },
             })
+
             lspconfig.tsserver.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
+                init_options = {
+                    preferences = {
+                        disableSuggestions = true,
+                    },
+                },
             })
+
             lspconfig.html.setup({
                 capabilities = capabilities,
                 filetypes = { "html", "templ" },
             })
             lspconfig.templ.setup({
                 vim.filetype.add({ extension = { templ = "templ" } }),
-                capabilities = capabilities
+                capabilities = capabilities,
             })
 
 
