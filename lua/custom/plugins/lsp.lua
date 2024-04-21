@@ -61,6 +61,9 @@ return {
                 capabilities = capabilities,
             })
 
+            lspconfig.pyright.setup({
+                capabilities = capabilities
+            })
 
             -- keymaps
             vim.keymap.set("n", "gd", function()
