@@ -17,6 +17,7 @@ return {
 
 			require("luasnip.loaders.from_vscode").lazy_load()
             luasnip.filetype_extend("templ", {"html"})
+            luasnip.filetype_extend("htmldjango", {"html"})
 
 			cmp.setup({
 				snippet = {
