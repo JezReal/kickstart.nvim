@@ -8,6 +8,7 @@ return {
             },
             keymaps = {
                 ["<C-h>"] = false,
+                ["<C-s>"] = false,
             },
         })
         vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
