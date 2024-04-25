@@ -4,7 +4,7 @@ return {
     config = function()
         require("lualine").setup({
             options = {
-                theme = "poimandres",
+                theme = "tokyonight",
             },
             sections = {
                 lualine_a = {},

@@ -1,13 +1,15 @@
 return {
-    "olivercederborg/poimandres.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-        require("poimandres").setup({})
+        require("tokyonight").setup({
+            transparent = false
+        })
     end,
 
     -- optionally set the colorscheme within lazy config
     init = function()
-        vim.cmd("colorscheme poimandres")
+        vim.cmd("colorscheme tokyonight-moon")
     end,
 }
