@@ -9,12 +9,21 @@ return {
                 }
             })
 
-            vim.keymap.set("n", "<leader>fz", "<cmd>FzfLua builtin<CR>")
-            vim.keymap.set("n", "<leader>fz", "<cmd>FzfLua builtin<CR>")
-            vim.keymap.set("n", "<leader>af", "<cmd>FzfLua files<CR>")
-            vim.keymap.set("n", "<leader>gf", "<cmd>FzfLua git_files<CR>")
-            vim.keymap.set("n", "<leader>lg", "<cmd>FzfLua live_grep<CR>")
-            vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua lgrep_curbuf<CR>")
+            vim.keymap.set("n", "<leader>fz", function()
+                vim.cmd("FzfLua builtin")
+            end)
+            vim.keymap.set("n", "<leader>af", function()
+                vim.cmd("FzfLua files")
+            end)
+            vim.keymap.set("n", "<leader>gf", function()
+                vim.cmd("FzfLua git_files")
+            end)
+            vim.keymap.set("n", "<leader>lg", function()
+                vim.cmd("FzfLua live_grep")
+            end)
+            vim.keymap.set("n", "<leader>fg", function()
+                vim.cmd("FzfLua lgrep_curbuf")
+            end)
         end
     }
 }
