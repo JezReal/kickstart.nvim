@@ -15,6 +15,10 @@ return {
                     "tsserver",
                     "html",
                     "emmet_language_server",
+                    "templ",
+                    "volar",
+                    "svelte",
+                    "astro"
                 },
             })
         end,
