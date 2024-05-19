@@ -54,7 +54,7 @@ return {
 
             lspconfig.html.setup({
                 capabilities = capabilities,
-                filetypes = { "html", "templ", "htmldjango" },
+                filetypes = { "html", "templ", "htmldjango", "vue" },
             })
             lspconfig.templ.setup({
                 vim.filetype.add({ extension = { templ = "templ" } }),
