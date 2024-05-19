@@ -78,6 +78,14 @@ return {
                 },
             })
 
+            lspconfig.svelte.setup({
+                capabilities = capabilities
+            })
+
+            lspconfig.astro.setup({
+                capabilities = capabilities
+            })
+
             -- keymaps
             vim.keymap.set("n", "gd", function()
                 vim.lsp.buf.definition()
