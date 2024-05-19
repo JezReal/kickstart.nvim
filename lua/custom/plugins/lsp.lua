@@ -45,6 +45,7 @@ return {
                         gofumpt = true,
                     },
                 },
+                filetypes = { "go", "gomod", "gowork", "gotmpl", "templ" }
             })
 
             lspconfig.tsserver.setup({
